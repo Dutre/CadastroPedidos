@@ -1,0 +1,78 @@
+<html>
+
+    <head>  
+        <meta charset="UTF-8"/>
+    </head>
+
+    <body>
+        <form>
+            <input type="text" id="Item" placeholder="Item"/>
+            <input type="number" id="Valor" placeholder="Valor"/>
+            <input type="button" value="+" onclick="Cadastrar()"/>           
+            
+            <table>
+                <tr>
+                
+                </tr>
+                <tbody id="lista">
+
+                </tbody>    
+            </table>
+
+            <label id="sum"></label>
+            
+        </form>
+        <script>
+            var vetorP = new Array();
+            var vetorV = new Array();
+
+            function Cadastrar(){
+                var n = document.getElementById("Item").value;
+                vetorP.push(n);
+                var v = Number(document.getElementById("Valor").value);
+                vetorV.push(v);
+                Listar(n,v);
+            }
+
+            function Listar(vetorP,vetorV){
+                var dados = '';
+                for (i=0;i<this.vetorP.length;i++){
+                    dados+='<tr>';
+                    dados+='<td>Item: '+this.vetorP[i]+'</td>';
+                    dados+='<td>    |Valor: '+this.vetorV[i]+'</td>';
+                    dados+='<td><button onclick="Excluir('+i+')">x</button></td>';
+                    dados+='<td><button onclick="Alterar('+i+')">e</button></td>';
+                          
+                    dados+="</tr>";
+                }
+                lista.innerHTML= dados;
+                Soma();
+                
+                };
+                    
+                
+            
+
+            function Excluir(item){
+                this.lista.splice(item, 1);
+                this.Listar();
+            }
+
+            function Alterar(){
+
+            }
+
+            function Soma(){
+                var soma = 0;
+                for(i=0;i<vetorV.length;i++){
+                    soma = soma + vetorV[i];
+                }
+
+                var sum = document.getElementById("sum");
+                sum.innerText = "\n\n\nSoma dos itens: " + soma;
+            }
+            
+
+        </script>
+    </body>
+</html>
